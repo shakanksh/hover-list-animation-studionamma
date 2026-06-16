@@ -13,7 +13,7 @@ export default function Home() {
         </div>
 
         <a
-          href="https://github.com"
+          href="https://github.com/shakanksh/hover-list-animation-studionamma"
           target="_blank"
           rel="noopener noreferrer"
           className="font-mono text-xs tracking-widest uppercase text-stone-500 hover:text-stone-900 transition-colors"
