@@ -8,7 +8,11 @@ import { useGSAP } from "@gsap/react";
 gsap.registerPlugin(useGSAP);
 
 const items = [
-  { title: "Art Direction", image: "/art-direction.webp", text: "Storytelling" },
+  {
+    title: "Art Direction",
+    image: "/art-direction.webp",
+    text: "Storytelling",
+  },
   { title: "Branding", image: "/branding.webp", text: "Identity" },
   { title: "Webflow", image: "/webflow.webp", text: "Integration" },
   { title: "UI/UX Design", image: "/ui-ux.webp", text: "Wireframes" },
@@ -33,11 +37,20 @@ export default function GSAPPage() {
     gsap.killTweensOf(imgRefs.current[i]);
     gsap.killTweensOf(paraRefs.current[i]);
 
-    gsap.to(imgRefs.current[i], { clipPath: "inset(0% 0 0% 0)", opacity: 1, duration: 0.5, ease: "power4.out" });
-    gsap.to(paraRefs.current[i], { opacity: 1, duration: 0.4, ease: "power4.out" });
+    gsap.to(imgRefs.current[i], {
+      clipPath: "inset(0% 0 0% 0)",
+      opacity: 1,
+      duration: 0.5,
+      ease: "power4.out",
+    });
+    gsap.to(paraRefs.current[i], {
+      opacity: 1,
+      duration: 0.4,
+      ease: "power4.out",
+    });
 
-    headingRefs.current.forEach((el, idx) => {
-      gsap.to(el, { opacity: idx === i ? 1 : 0.15, duration: 0.3 });
+    headingRefs.current.forEach((el, id) => {
+      gsap.to(el, { opacity: id === i ? 1 : 0.15, duration: 0.3 });
     });
   };
 
@@ -46,7 +59,10 @@ export default function GSAPPage() {
     gsap.killTweensOf(paraRefs.current[i]);
 
     // instant hide — no exit animation
-    gsap.set(imgRefs.current[i], { clipPath: "inset(50% 0 50% 0)", opacity: 0 });
+    gsap.set(imgRefs.current[i], {
+      clipPath: "inset(50% 0 50% 0)",
+      opacity: 0,
+    });
     gsap.set(paraRefs.current[i], { opacity: 0 });
 
     headingRefs.current.forEach((el) => {
@@ -57,8 +73,15 @@ export default function GSAPPage() {
   return (
     <section className="h-screen bg-stone-200 text-stone-900 flex flex-col items-center justify-center cursor-default">
       <nav className="absolute top-0 left-0 right-0 flex items-center justify-between px-10 py-6">
-        <Link href="/" className="font-mono text-xs tracking-widest uppercase text-stone-900 hover:text-stone-500 transition-colors duration-200">← Home</Link>
-        <span className="font-mono text-xs tracking-widest uppercase text-stone-900">Built with GSAP</span>
+        <Link
+          href="/"
+          className="font-mono text-xs tracking-widest uppercase text-stone-900 hover:text-stone-500 transition-colors duration-200"
+        >
+          ← Home
+        </Link>
+        <span className="font-mono text-xs tracking-widest uppercase text-stone-900">
+          Built with GSAP
+        </span>
       </nav>
 
       {items.map((item, i) => (
@@ -71,13 +94,17 @@ export default function GSAPPage() {
           <img
             src={item.image}
             alt={item.title}
-            ref={(el) => { imgRefs.current[i] = el; }}
+            ref={(el) => {
+              imgRefs.current[i] = el;
+            }}
             className="absolute left-[1%] w-[384px] aspect-540/405 rounded-md object-cover z-20"
           />
           <div className="flex-1" />
           <div className="relative z-10 px-12">
             <h4
-              ref={(el) => { headingRefs.current[i] = el; }}
+              ref={(el) => {
+                headingRefs.current[i] = el;
+              }}
               className="font-extrabold tracking-[-0.45rem] text-8xl"
             >
               {item.title}
@@ -85,7 +112,9 @@ export default function GSAPPage() {
           </div>
           <div className="flex-1">
             <p
-              ref={(el) => { paraRefs.current[i] = el; }}
+              ref={(el) => {
+                paraRefs.current[i] = el;
+              }}
               className="font-mono tracking-wide text-sm"
             >
               {item.text}
